@@ -1,0 +1,29 @@
+
+Create an EKS Cluster with Terraform Module
+ - 2 spot nodes 
+ - node type as minimal as possible
+
+Create a S3 Bucket for state storage. 
+
+	
+
+Deploy an app, any app:
+ - with Terraform using helm_release resource/module
+
+Direct App logs and metrics (CPU / memory / ...) to Cloudwatch (use adot for metrics)
+Deploy Prometheus and Grafana
+
+Create a dashboard for the app
+ - in Cloudwatch
+ - in Grafana
+
+Setup Alerting to Slack
+
+Use ALB Controller	
+ - expose the App under public domain
+
+Configure an external health check for the domain
+
+Test the load, 
+
+Document the setup.

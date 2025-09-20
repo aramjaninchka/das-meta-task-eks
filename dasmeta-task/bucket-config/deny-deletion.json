@@ -1,0 +1,15 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "DenyDeleteBucket",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": [
+                "s3:DeleteBucket",
+                "s3:DeleteBucketPolicy"
+            ],
+            "Resource": "arn:aws:s3:::aram-dasmeta-task-state"
+        }
+    ]
+}

@@ -1,0 +1,3 @@
+IAM Role for Service Accounts VPC CNI
+Authentication mode - from AWS Github
+
