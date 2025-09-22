@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: nginx-metrics
+  namespace: monitoring
+  labels:
+    app: nginx
+spec:
+  selector:
+    matchLabels:
+      app: nginx  # Adjust to match your nginx service labels
+  endpoints:
+  - port: metrics  # Port name where nginx exposes metrics
+    interval: 30s
+    path: /metrics

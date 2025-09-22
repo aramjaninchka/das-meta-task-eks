@@ -1,0 +1,36 @@
+# adot-nginx-patch.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: adot-collector-config
+  namespace: other
+data:
+  adot-config.yaml: |
+    receivers:
+      prometheus:
+        config:
+          scrape_configs:
+            - job_name: 'nginx-metrics'
+              kubernetes_sd_configs:
+                - role: endpoints
+                  namespaces:
+                    names:
+                      - default
+              relabel_configs:
+                - source_labels: [__meta_kubernetes_service_name]
+                  action: keep
+                  regex: nginx
+                - source_labels: [__meta_kubernetes_endpoint_port_name]
+                  action: keep
+                  regex: metrics
+    
+    exporters:
+      awscloudwatchmetrics:
+        region: eu-north-1
+        namespace: EKS/nginx
+    
+    service:
+      pipelines:
+        metrics:
+          receivers: [prometheus]
+          exporters: [awscloudwatchmetrics]

@@ -3,7 +3,7 @@ data "terraform_remote_state" "eks" {
   config = {
     bucket = "aram-dasmeta-task-state"
     key    = "eks-state"
-    region = var.region
+    region = "eu-north-1"
   }
 
 }
@@ -15,11 +15,3 @@ data "aws_eks_cluster" "cluster" {
 data "aws_eks_cluster_auth" "cluster" {
   name = data.terraform_remote_state.eks.outputs.cluster_name
 }
-
-data "kubernetes_service" "nginx" {
-  depends_on = [helm_release.nginx]
-  metadata {
-    name = "nginx"
-  }
-}
-

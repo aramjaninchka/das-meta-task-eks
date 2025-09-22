@@ -8,7 +8,7 @@ terraform {
   backend "s3" {
     bucket = "aram-dasmeta-task-state"
     region = "eu-north-1"
-    key = "terraform.tfstate"
+    key = "eks-state"
   }
 }
 

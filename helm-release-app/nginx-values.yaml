@@ -1,1 +1,22 @@
-replicaCount: 2
+# Enable Prometheus metrics (this works without Prometheus Operator)
+metrics:
+  enabled: true
+  
+# Configure service
+service:
+  type: LoadBalancer
+
+# Add resource limits
+resources:
+  requests:
+    memory: "64Mi"
+    cpu: "50m"
+  limits:
+    memory: "128Mi"
+    cpu: "100m"
+
+# Pod annotations for Prometheus scraping (if you have Prometheus)
+podAnnotations:
+  prometheus.io/scrape: "true"
+  prometheus.io/port: "9113"
+  prometheus.io/path: "/metrics"

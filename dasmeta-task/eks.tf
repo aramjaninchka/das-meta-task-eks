@@ -22,7 +22,6 @@ module "eks" {
 
   vpc_id                   = module.vpc.vpc_id
   subnet_ids               = module.vpc.private_subnets
-#   control_plane_subnet_ids = module.vpc.private_subnets
 
   # EKS Managed Node Group(s)
   eks_managed_node_groups = {
@@ -34,6 +33,10 @@ module "eks" {
       min_size     = var.node_group_min_size
       max_size     = var.node_group_max_size
       desired_size = var.node_group_desired_size
+
+      iam_role_additional_policies = {
+        CloudWatchAgentServerPolicy = "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
+      }
     }
   }
 
