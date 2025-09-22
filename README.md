@@ -1,6 +1,7 @@
 # Dasmeta EKS Infrastructure Task - Completion Report
 
 ## Task Overview
+I will finish this task no matter what, since it was a very challenging but interesting task. I have a lot to learn about K8s and how Cloudwatch expects you to send data to it.
 I was given a comprehensive infrastructure task to create an EKS cluster with monitoring, logging, and application deployment capabilities. This document outlines the current progress and remaining work.
 
 ## ✅ Completed Components
